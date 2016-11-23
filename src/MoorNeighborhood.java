@@ -22,23 +22,23 @@ public class MoorNeighborhood implements CellNeighborhood {
         else return new HashSet<>();//wersja robocza;
     }
 
-    private Set<CellCoordinates> searchNeighborsNoWrap(CellCoordinates cell){
+    private Set<CellCoordinates> searchNeighborsNoWrap(CellCoordinates coords){
         HashSet<CellCoordinates> toReturnSet = new HashSet<>();
-        Coordinates2D castCell = (Coordinates2D) cell;
+        Coordinates2D castCoords = (Coordinates2D) coords;
 
         for(int x = -radius; x <= radius; ++x){
             for(int y = -radius; y <= radius; ++y){
                 if(x == 0 && y == 0)
                     continue;
-                if(checkNewCoords(castCell, x, y))
-                    toReturnSet.add(new Coordinates2D(castCell.x+x, castCell.y+y));
+                if(checkNewCoords(castCoords, x, y))
+                    toReturnSet.add(new Coordinates2D(castCoords.x+x, castCoords.y+y));
             }
         }
         return toReturnSet;
     }
 
-    private boolean checkNewCoords(Coordinates2D cell, int moveX, int moveY){
-        return coordsAreOnBoard(cell.x + moveX, cell.y + moveY);
+    private boolean checkNewCoords(Coordinates2D coords, int moveX, int moveY){
+        return coordsAreOnBoard(coords.x + moveX, coords.y + moveY);
     }
 
     private boolean coordsAreOnBoard(int XCoord, int YCoord){

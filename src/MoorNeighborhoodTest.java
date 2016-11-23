@@ -14,8 +14,8 @@ public class MoorNeighborhoodTest {
     @Test
     public void Check2x3NeighboursNoWrapRadius1() {
         MoorNeighborhood testMN = new MoorNeighborhood(5, 5, false, 1);
-        Cell cell = new Cell();
-        cell.coords = new Coordinates2D(2,3);
+        Cell cell = new Cell(BinaryState.ALIVE, new Coordinates2D(2,3));
+        //cell.coords = new Coordinates2D(2,3);
         HashSet<CellCoordinates> neighbors = (HashSet<CellCoordinates>) testMN.cellNeighbors(cell.coords);
         Set<CellCoordinates> expectedNeighbors = new HashSet<>();
         expectedNeighbors.add(new Coordinates2D(1,2));
@@ -34,8 +34,8 @@ public class MoorNeighborhoodTest {
     @Test
     public void Check4x1NeighboursNoWrapRadius1() {
         MoorNeighborhood testMN = new MoorNeighborhood(5, 5, false, 1);
-        Cell cell = new Cell();
-        cell.coords = new Coordinates2D(4,1);
+        Cell cell = new Cell(BinaryState.ALIVE, new Coordinates2D(4,1));
+        //cell.coords = new Coordinates2D(4,1);
         HashSet<CellCoordinates> neighbors = (HashSet<CellCoordinates>) testMN.cellNeighbors(cell.coords);
         Set<CellCoordinates> expectedNeighbors = new HashSet<>();
         expectedNeighbors.add(new Coordinates2D(3,0));
@@ -51,8 +51,8 @@ public class MoorNeighborhoodTest {
     @Test
     public void Check0x4NeighboursNoWrapRadius1() {
         MoorNeighborhood testMN = new MoorNeighborhood(5, 5, false, 1);
-        Cell cell = new Cell();
-        cell.coords = new Coordinates2D(0,4);
+        Cell cell = new Cell(BinaryState.ALIVE, new Coordinates2D(0,4));
+        //cell.coords = new Coordinates2D(0,4);
         HashSet<CellCoordinates> neighbors = (HashSet<CellCoordinates>) testMN.cellNeighbors(cell.coords);
         Set<CellCoordinates> expectedNeighbors = new HashSet<>();
         expectedNeighbors.add(new Coordinates2D(0,3));
@@ -66,8 +66,8 @@ public class MoorNeighborhoodTest {
     @Test
     public void Check4x1NeighboursNoWrapRadius2() {
         MoorNeighborhood testMN = new MoorNeighborhood(5, 5, false, 2);
-        Cell cell = new Cell();
-        cell.coords = new Coordinates2D(4,1);
+        Cell cell = new Cell(BinaryState.ALIVE, new Coordinates2D(4,1));
+        //cell.coords = new Coordinates2D(4,1);
         HashSet<CellCoordinates> neighbors = (HashSet<CellCoordinates>) testMN.cellNeighbors(cell.coords);
         Set<CellCoordinates> expectedNeighbors = new HashSet<>();
         expectedNeighbors.add(new Coordinates2D(2,0));

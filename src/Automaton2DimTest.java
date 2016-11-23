@@ -21,11 +21,11 @@ public class Automaton2DimTest {
         }
     }
 
-    @Test
-    public void changeCellStateTest_X2Y1Alive(){
-        Automaton2Dim automaton2Dim = new GameOfLife(3,3);
-        automaton2Dim.changeCellStateToAlive(2,1);
-        Assert.assertEquals("X:2,Y:1 cell should be alive", BinaryState.ALIVE,
-                automaton2Dim.board.get(2).get(1).state);
-    }
+//    @Test
+//    public void changeCellStateTest_X2Y1Alive(){
+//        Automaton2Dim automaton2Dim = new GameOfLife(3,3);
+//        automaton2Dim.changeCellStateToAlive(2,1);
+//        Assert.assertEquals("X:2,Y:1 cell should be alive", BinaryState.ALIVE,
+//                automaton2Dim.board.get(2).get(1).state);
+//    }
 }

@@ -9,8 +9,8 @@ import static org.junit.Assert.*;
 public class GameOfLifeRulesTest {
     @Test
     public void determineStateTest_CellHas3NeighborsAndIsDead(){
-        Cell cell = new Cell();
-        cell.state = BinaryState.DEAD;
+        Cell cell = new Cell(BinaryState.DEAD, new Coordinates2D(2,3));
+        //cell.state = BinaryState.DEAD;
         GameOfLifeRules golRules = new GameOfLifeRules();
         ArrayList<Integer> remainsAlive = new ArrayList<>();
         remainsAlive.add(2);
@@ -25,8 +25,8 @@ public class GameOfLifeRulesTest {
 
     @Test
     public void determineStateTest_CellHas2NeighborsAndIsDead(){
-        Cell cell = new Cell();
-        cell.state = BinaryState.DEAD;
+        Cell cell = new Cell(BinaryState.DEAD, new Coordinates2D(2,3));
+        //cell.state = BinaryState.DEAD;
         GameOfLifeRules golRules = new GameOfLifeRules();
         ArrayList<Integer> remainsAlive = new ArrayList<>();
         remainsAlive.add(2);
@@ -41,8 +41,8 @@ public class GameOfLifeRulesTest {
 
     @Test
     public void determineStateTest_CellHas2NeighborsAndIsAlive(){
-        Cell cell = new Cell();
-        cell.state = BinaryState.ALIVE;
+        Cell cell = new Cell(BinaryState.ALIVE, new Coordinates2D(2,3));
+        //cell.state = BinaryState.ALIVE;
         GameOfLifeRules golRules = new GameOfLifeRules();
         ArrayList<Integer> remainsAlive = new ArrayList<>();
         remainsAlive.add(2);
