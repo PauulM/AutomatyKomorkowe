@@ -61,19 +61,19 @@ public class Automaton2DimTest {
         }
     }
 
-    @Test(expected = Exception.class)
-    public void nextCoordinatesTest_Coords4x4_Board5x5_ThrowsException() throws Exception{
-        Automaton2Dim gameOfLife = new GameOfLife(5,5);
-        CellCoordinates coords = new Coordinates2D(4,4);
-        gameOfLife.nextCoordinates(coords);
-    }
-
-    @Test(expected = Exception.class)
-    public void nextCoordinatesTest_Coords5x5_Board5x5_ThrowsException() throws Exception{
-        Automaton2Dim gameOfLife = new GameOfLife(5,5);
-        CellCoordinates coords = new Coordinates2D(5,5);
-        gameOfLife.nextCoordinates(coords);
-    }
+//    @Test(expected = Exception.class)
+//    public void nextCoordinatesTest_Coords4x4_Board5x5_ThrowsException() throws Exception{
+//        Automaton2Dim gameOfLife = new GameOfLife(5,5);
+//        CellCoordinates coords = new Coordinates2D(4,4);
+//        gameOfLife.nextCoordinates(coords);
+//    }
+//
+//    @Test(expected = Exception.class)
+//    public void nextCoordinatesTest_Coords5x5_Board5x5_ThrowsException() throws Exception{
+//        Automaton2Dim gameOfLife = new GameOfLife(5,5);
+//        CellCoordinates coords = new Coordinates2D(5,5);
+//        gameOfLife.nextCoordinates(coords);
+//    }
 
 
 

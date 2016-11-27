@@ -12,9 +12,9 @@ public abstract class Automaton {
         return null;
     }
 
-    public void insertStructure (Map <? extends CellCoordinates, CellState> structure){
-        //this.cells = structure;
-    }
+//    public void insertStructure (Map <? extends CellCoordinates, CellState> structure){
+//        //wstawia strukturę na początek
+//    }
 
     public class CellIterator{
         private CellCoordinates currentCoords;
@@ -24,10 +24,10 @@ public abstract class Automaton {
         }
 
         public boolean hasNext(){
-            return true; // w budowie
+            return hasNextCoordinates(currentCoords);
         }
         public Cell next(){
-            return null;//w budowie
+            return new Cell(cells.get(nextCoordinates(currentCoords)), nextCoordinates(currentCoords));
         }
         public void setState(CellState state){
             cells.put(currentCoords, state);
@@ -40,7 +40,7 @@ public abstract class Automaton {
 
     protected abstract Automaton newInstance(CellStateFactory cellStateFactory, CellNeighborhood cellNeighborhood);
     protected abstract boolean hasNextCoordinates(CellCoordinates cellCoords);
-    protected abstract CellCoordinates nextCoordinates(CellCoordinates cellCoords) throws Exception;
+    protected abstract CellCoordinates nextCoordinates(CellCoordinates cellCoords);
     protected abstract CellCoordinates initialCoordinates();
     protected abstract CellState nextCellState(Cell currentCell, Set<Cell> neighborsStates);
 

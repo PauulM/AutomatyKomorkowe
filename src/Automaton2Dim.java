@@ -40,14 +40,14 @@ public abstract class Automaton2Dim extends Automaton{
         //jeśli dane współrzędne są maksymalne (leżą w prawym dolnym) to znaczy że nie ma już kolejnych
     }
 
-    protected CellCoordinates nextCoordinates(CellCoordinates cellCoords) throws Exception {
+    protected CellCoordinates nextCoordinates(CellCoordinates cellCoords) {
         Coordinates2D castCoords = (Coordinates2D) cellCoords;
         if(castCoords.x < width-1 && castCoords.y < height)
             return new Coordinates2D(castCoords.x+1, castCoords.y);
         else if(castCoords.x == width-1 && castCoords.y < height-1)
             return new Coordinates2D(0, castCoords.y + 1);
         else
-            throw new Exception("No next coordinates");
+            return castCoords;
     }
 
 
