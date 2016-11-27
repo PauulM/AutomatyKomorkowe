@@ -12,6 +12,31 @@ public class GameOfLife extends Automaton2Dim {
 
     }
 
+    protected Automaton newInstance(CellStateFactory cellStateFactory, CellNeighborhood cellNeighborhood) {
+        return new GameOfLife(this.getWidth(), this.getHeight());
+    }
+
+    protected CellState nextCellState(Cell currentCell, Set<Cell> neighborsStates){
+        return golRules.determineState(numberOfAliveNeighbors(neighborsStates), currentCell.state);
+    }
+
+    private int numberOfAliveNeighbors(Set<Cell> neighborStates){
+        int aliveNeighbors = 0;
+        for(Cell tmpCell : neighborStates){
+            if(tmpCell.state == BinaryState.ALIVE)
+                ++aliveNeighbors;
+        }
+        return aliveNeighbors;
+    }
+
+
+
+
+
+
+
+
+
 //    public void nextState (){
 //        ArrayList<ArrayList<Cell>> updatedList = new ArrayList<>();
 //        for(ArrayList<Cell> XList : this.board){
@@ -23,8 +48,8 @@ public class GameOfLife extends Automaton2Dim {
 //        }
 //        this.board = updatedList;
 //    }
-
-//    protected int numberOfAliveNeighbors(ArrayList<CellCoordinates> neighborsCoords){
+//
+//    protected int numberOfAliveNeighbors(Set<CellCoordinates> neighborsCoords){
 //        int aliveNeighbors = 0;
 //        for(CellCoordinates tmpCoords : neighborsCoords){
 //            Coordinates2D tmpCoords2D = (Coordinates2D) tmpCoords;

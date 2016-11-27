@@ -1,8 +1,5 @@
 import java.util.ArrayList;
 
-/**
- * Created by pawma on 21.11.2016.
- */
 public class GameOfLifeRules {
     public ArrayList<Integer> remainsAlive;
     public ArrayList<Integer> borns;
@@ -16,15 +13,15 @@ public class GameOfLifeRules {
         this.borns = b;
     }
 
-    public CellState determineState (int numberOfNeighbors, CellState state){
+    public CellState determineState (int numberOfAliveNeighbors, CellState state){
         if(state.equals(BinaryState.ALIVE)){
-            if(isOnTheList(numberOfNeighbors, remainsAlive))
+            if(isOnTheList(numberOfAliveNeighbors, remainsAlive))
                 return BinaryState.ALIVE;
             else
                 return BinaryState.DEAD;
         }
         else{
-            if(isOnTheList(numberOfNeighbors, borns))
+            if(isOnTheList(numberOfAliveNeighbors, borns))
                 return BinaryState.ALIVE;
             else
                 return BinaryState.DEAD;

@@ -24,24 +24,26 @@ public abstract class Automaton {
         }
 
         public boolean hasNext(){
-
+            return true; // w budowie
         }
         public Cell next(){
-
+            return null;//w budowie
         }
         public void setState(CellState state){
             cells.put(currentCoords, state);
         }
     }
 
-    public CellIterator cellIterator(){
-        return new CellIterator();
-    }
+//    public CellIterator cellIterator(){
+//        return new CellIterator();
+//    }
 
     protected abstract Automaton newInstance(CellStateFactory cellStateFactory, CellNeighborhood cellNeighborhood);
     protected abstract boolean hasNextCoordinates(CellCoordinates cellCoords);
+    protected abstract CellCoordinates nextCoordinates(CellCoordinates cellCoords) throws Exception;
     protected abstract CellCoordinates initialCoordinates();
     protected abstract CellState nextCellState(Cell currentCell, Set<Cell> neighborsStates);
+
 
     //dla danego setu współrzędnych znajduje stany komórek pod tymi współrzędnymi i tworzy set celli
     private Set<Cell> mapCoordinates (Set<CellCoordinates> cellCoordinates){
