@@ -6,14 +6,14 @@ public class GameOfLife extends Automaton2Dim {
     private GameOfLifeRules golRules;
     private CellNeighborhood neighborhoodKind;
 
-    public GameOfLife(int width,int height){
-        super(width, height);
+    public GameOfLife(int width,int height,CellStateFactory cellStateFactory, CellNeighborhood cellNeighborhood){
+        super(width, height, cellStateFactory, cellNeighborhood);
         golRules = new GameOfLifeRules();
 
     }
 
     protected Automaton newInstance(CellStateFactory cellStateFactory, CellNeighborhood cellNeighborhood) {
-        return new GameOfLife(this.getWidth(), this.getHeight());
+        return new GameOfLife(this.getWidth(), this.getHeight(), cellStateFactory, cellNeighborhood);
     }
 
     protected CellState nextCellState(Cell currentCell, Set<Cell> neighborsStates){
