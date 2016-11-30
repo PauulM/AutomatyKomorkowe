@@ -6,15 +6,34 @@ import java.util.Set;
 public abstract class Automaton {
     private CellNeighborhood neighborsStrategy;
     private Map<CellCoordinates, CellState> cells;
+    private CellStateFactory stateFactory;
 
-    public Automaton nextState(){
-
-        return null;
+    public Automaton(CellStateFactory cellStateFactory, CellNeighborhood cellNeighborhood){
+        this.stateFactory = cellStateFactory;
+        this.neighborsStrategy = cellNeighborhood;
     }
 
-//    public void insertStructure (Map <? extends CellCoordinates, CellState> structure){
-//        //wstawia strukturę na początek
-//    }
+    public Automaton nextState(){
+        Automaton newAutomaton = newInstance(stateFactory, neighborsStrategy);
+        CellIterator currentIterator = cellIterator();
+        CellIterator newIterator = newAutomaton.cellIterator();
+        while(currentIterator.hasNext()){
+            Cell c = currentIterator.next();
+            Set<Cell> neighborsCellSet = mapCoordinates(neighborsStrategy.cellNeighbors(c.coords));
+            newIterator.next();
+            newIterator.setState(nextCellState(c, neighborsCellSet));
+        }
+        return newAutomaton;
+    }
+
+    public void insertStructure (Map<CellCoordinates, CellState> structure){
+        CellIterator iterator = cellIterator();
+        while(iterator.hasNext()){
+            Cell tmpCell = iterator.next();
+            cells.put(tmpCell.coords,stateFactory.initialState(tmpCell.coords));
+        }
+
+    }
 
     public class CellIterator{
         private CellCoordinates currentCoords;
@@ -27,16 +46,18 @@ public abstract class Automaton {
             return hasNextCoordinates(currentCoords);
         }
         public Cell next(){
-            return new Cell(cells.get(nextCoordinates(currentCoords)), nextCoordinates(currentCoords));
+            Cell tmpCell = new Cell(cells.get(nextCoordinates(currentCoords)), nextCoordinates(currentCoords));
+            currentCoords = nextCoordinates(currentCoords);
+            return tmpCell;
         }
         public void setState(CellState state){
             cells.put(currentCoords, state);
         }
     }
 
-//    public CellIterator cellIterator(){
-//        return new CellIterator();
-//    }
+    public CellIterator cellIterator(){
+        return new CellIterator(initialCoordinates());
+    }
 
     protected abstract Automaton newInstance(CellStateFactory cellStateFactory, CellNeighborhood cellNeighborhood);
     protected abstract boolean hasNextCoordinates(CellCoordinates cellCoords);

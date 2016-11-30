@@ -5,7 +5,8 @@ public abstract class Automaton2Dim extends Automaton{
     private int height;
 
 
-    public Automaton2Dim(int width, int height){
+    public Automaton2Dim(int width, int height,CellStateFactory cellStateFactory, CellNeighborhood cellNeighborhood){
+        super(cellStateFactory,cellNeighborhood);
         this.width = width;
         this.height = height;
     }
@@ -27,7 +28,7 @@ public abstract class Automaton2Dim extends Automaton{
     }
 
     protected CellCoordinates initialCoordinates(){
-        return new Coordinates2D(0,0);
+        return new Coordinates2D(-1,0);
     }
 
     protected boolean hasNextCoordinates (CellCoordinates cellCoords){
