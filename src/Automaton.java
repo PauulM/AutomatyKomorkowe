@@ -8,9 +8,11 @@ public abstract class Automaton {
     private Map<CellCoordinates, CellState> cells;
     private CellStateFactory stateFactory;
 
-    public Automaton(CellStateFactory cellStateFactory, CellNeighborhood cellNeighborhood){
+    public Automaton(CellStateFactory cellStateFactory, CellNeighborhood cellNeighborhood,
+                     Map<CellCoordinates, CellState> cells){
         this.stateFactory = cellStateFactory;
         this.neighborsStrategy = cellNeighborhood;
+        this.cells = cells;
     }
 
     public Automaton nextState(){
@@ -27,11 +29,12 @@ public abstract class Automaton {
     }
 
     public void insertStructure (Map<CellCoordinates, CellState> structure){
-        CellIterator iterator = cellIterator();
-        while(iterator.hasNext()){
-            Cell tmpCell = iterator.next();
-            cells.put(tmpCell.coords,stateFactory.initialState(tmpCell.coords));
-        }
+        this.cells = structure;
+//        CellIterator iterator = cellIterator();
+//        while(iterator.hasNext()){
+//            Cell tmpCell = iterator.next();
+//            cells.put(tmpCell.coords,stateFactory.initialState(tmpCell.coords));
+//        }
 
     }
 
@@ -46,9 +49,17 @@ public abstract class Automaton {
             return hasNextCoordinates(currentCoords);
         }
         public Cell next(){
-            Cell tmpCell = new Cell(cells.get(nextCoordinates(currentCoords)), nextCoordinates(currentCoords));
             currentCoords = nextCoordinates(currentCoords);
+            //cells.get(currentCoords);
+            Cell tmpCell = null;
+            if(hasNext()){
+                tmpCell = new Cell(cells.get(nextCoordinates(currentCoords)), nextCoordinates(currentCoords));
+            }
             return tmpCell;
+
+//            Cell tmpCell = new Cell(cells.get(nextCoordinates(currentCoords)), nextCoordinates(currentCoords));
+//            currentCoords = nextCoordinates(currentCoords);
+//            return tmpCell;
         }
         public void setState(CellState state){
             cells.put(currentCoords, state);

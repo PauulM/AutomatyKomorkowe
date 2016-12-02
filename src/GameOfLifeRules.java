@@ -1,14 +1,15 @@
 import java.util.ArrayList;
+import java.util.Set;
 
 public class GameOfLifeRules {
-    public ArrayList<Integer> remainsAlive;
-    public ArrayList<Integer> borns;
+    public Set<Integer> remainsAlive;
+    public Set<Integer> borns;
 
     public GameOfLifeRules(){
 
     }
 
-    public void initializeRules(ArrayList<Integer> a, ArrayList<Integer> b){
+    public void initializeRules(Set<Integer> a, Set<Integer> b){
         this.remainsAlive = a;
         this.borns = b;
     }
@@ -29,7 +30,7 @@ public class GameOfLifeRules {
 
     }
 
-    private boolean isOnTheList (Integer element, ArrayList<Integer> list){
+    private boolean isOnTheList (Integer element, Set<Integer> list){
         for(Integer value : list) {
             if(value.equals(element))
                 return true;

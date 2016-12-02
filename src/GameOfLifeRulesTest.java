@@ -2,6 +2,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.Assert.*;
 
@@ -12,10 +14,10 @@ public class GameOfLifeRulesTest {
         Cell cell = new Cell(BinaryState.DEAD, new Coordinates2D(2,3));
         //cell.state = BinaryState.DEAD;
         GameOfLifeRules golRules = new GameOfLifeRules();
-        ArrayList<Integer> remainsAlive = new ArrayList<>();
+        Set<Integer> remainsAlive = new HashSet<>();
         remainsAlive.add(2);
         remainsAlive.add(3);
-        ArrayList<Integer> borns = new ArrayList<>();
+        Set<Integer> borns = new HashSet<>();
         borns.add(3);
         golRules.initializeRules(remainsAlive, borns);
 
@@ -28,10 +30,10 @@ public class GameOfLifeRulesTest {
         Cell cell = new Cell(BinaryState.DEAD, new Coordinates2D(2,3));
         //cell.state = BinaryState.DEAD;
         GameOfLifeRules golRules = new GameOfLifeRules();
-        ArrayList<Integer> remainsAlive = new ArrayList<>();
+        Set<Integer> remainsAlive = new HashSet<>();
         remainsAlive.add(2);
         remainsAlive.add(3);
-        ArrayList<Integer> borns = new ArrayList<>();
+        Set<Integer> borns = new HashSet<>();
         borns.add(3);
         golRules.initializeRules(remainsAlive, borns);
 
@@ -44,10 +46,10 @@ public class GameOfLifeRulesTest {
         Cell cell = new Cell(BinaryState.ALIVE, new Coordinates2D(2,3));
         //cell.state = BinaryState.ALIVE;
         GameOfLifeRules golRules = new GameOfLifeRules();
-        ArrayList<Integer> remainsAlive = new ArrayList<>();
+        Set<Integer> remainsAlive = new HashSet<>();
         remainsAlive.add(2);
         remainsAlive.add(3);
-        ArrayList<Integer> borns = new ArrayList<>();
+        Set<Integer> borns = new HashSet<>();
         borns.add(3);
         golRules.initializeRules(remainsAlive, borns);
 

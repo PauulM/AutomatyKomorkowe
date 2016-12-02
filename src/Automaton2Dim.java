@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class Automaton2Dim extends Automaton{
     private int width;
@@ -6,10 +8,23 @@ public abstract class Automaton2Dim extends Automaton{
 
 
     public Automaton2Dim(int width, int height,CellStateFactory cellStateFactory, CellNeighborhood cellNeighborhood){
-        super(cellStateFactory,cellNeighborhood);
+        super(cellStateFactory,cellNeighborhood, initializeBoard(width, height, cellStateFactory));
         this.width = width;
         this.height = height;
     }
+
+    private static Map<CellCoordinates, CellState> initializeBoard(int width, int height,
+                                                                   CellStateFactory cellStateFactory){
+        Map<CellCoordinates,CellState> board = new HashMap<>();
+        for(int x = 0; x<width; ++x){
+            for(int y = 0; y<height; ++y){
+                Coordinates2D tmpCoords2D = new Coordinates2D(x,y);
+                board.put(tmpCoords2D, cellStateFactory.initialState(tmpCoords2D));
+            }
+        }
+        return board;
+    }
+
 
     public int getWidth() {
         return width;
