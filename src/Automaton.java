@@ -50,7 +50,7 @@ public abstract class Automaton {
         }
         public Cell next(){
             currentCoords = nextCoordinates(currentCoords);
-            //cells.get(currentCoords);
+            cells.get(currentCoords);
             Cell tmpCell = null;
             if(hasNext()){
                 tmpCell = new Cell(cells.get(nextCoordinates(currentCoords)), nextCoordinates(currentCoords));

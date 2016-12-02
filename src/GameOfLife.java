@@ -4,16 +4,17 @@ import java.util.Set;
 public class GameOfLife extends Automaton2Dim {
 
     private GameOfLifeRules golRules;
-    private CellNeighborhood neighborhoodKind;
+    //private CellNeighborhood neighborhoodKind;
 
-    public GameOfLife(int width,int height,CellStateFactory cellStateFactory, CellNeighborhood cellNeighborhood){
+    public GameOfLife(int width,int height,CellStateFactory cellStateFactory,
+                      CellNeighborhood cellNeighborhood, GameOfLifeRules rules){
         super(width, height, cellStateFactory, cellNeighborhood);
-        golRules = new GameOfLifeRules();
+        golRules = rules;
 
     }
 
     protected Automaton newInstance(CellStateFactory cellStateFactory, CellNeighborhood cellNeighborhood) {
-        return new GameOfLife(this.getWidth(), this.getHeight(), cellStateFactory, cellNeighborhood);
+        return new GameOfLife(this.getWidth(), this.getHeight(), cellStateFactory, cellNeighborhood, this.golRules);
     }
 
     protected CellState nextCellState(Cell currentCell, Set<Cell> neighborsStates){

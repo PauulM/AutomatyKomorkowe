@@ -10,6 +10,8 @@ public class GameOfLifeRules {
     }
 
     public void initializeRules(Set<Integer> a, Set<Integer> b){
+        //przerobić żeby z parametrów stringa robił sety
+
         this.remainsAlive = a;
         this.borns = b;
     }
