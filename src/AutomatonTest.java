@@ -40,20 +40,20 @@ public class AutomatonTest {
 
         Map<CellCoordinates, CellState> map2 = new HashMap<>();
 
-        map.put(new Coordinates2D(0,0), BinaryState.DEAD);
-        map.put(new Coordinates2D(1,0), BinaryState.DEAD);
-        map.put(new Coordinates2D(2,0), BinaryState.DEAD);
-        map.put(new Coordinates2D(0,1), BinaryState.ALIVE);
-        map.put(new Coordinates2D(1,1), BinaryState.ALIVE);
-        map.put(new Coordinates2D(2,1), BinaryState.ALIVE);
-        map.put(new Coordinates2D(0,2), BinaryState.DEAD);
-        map.put(new Coordinates2D(1,2), BinaryState.DEAD);
-        map.put(new Coordinates2D(2,2), BinaryState.DEAD);
+        map2.put(new Coordinates2D(0,0), BinaryState.DEAD);
+        map2.put(new Coordinates2D(1,0), BinaryState.DEAD);
+        map2.put(new Coordinates2D(2,0), BinaryState.DEAD);
+        map2.put(new Coordinates2D(0,1), BinaryState.ALIVE);
+        map2.put(new Coordinates2D(1,1), BinaryState.ALIVE);
+        map2.put(new Coordinates2D(2,1), BinaryState.ALIVE);
+        map2.put(new Coordinates2D(0,2), BinaryState.DEAD);
+        map2.put(new Coordinates2D(1,2), BinaryState.DEAD);
+        map2.put(new Coordinates2D(2,2), BinaryState.DEAD);
 
         Automaton expectedNextAutomaton = new GameOfLife(3,3,factory,neighborhood,golRules);
 
 
-        Assert.assertEquals("abc", true, map.equals(map2));
+        Assert.assertEquals("abc", true, map2.equals(nxtAut.getCells()));
 
     }
 

@@ -51,10 +51,7 @@ public abstract class Automaton {
         public Cell next(){
             currentCoords = nextCoordinates(currentCoords);
             cells.get(currentCoords);
-            Cell tmpCell = null;
-            if(hasNext()){
-                tmpCell = new Cell(cells.get(nextCoordinates(currentCoords)), nextCoordinates(currentCoords));
-            }
+            Cell tmpCell = new Cell(cells.get(currentCoords), currentCoords);
             return tmpCell;
 
 //            Cell tmpCell = new Cell(cells.get(nextCoordinates(currentCoords)), nextCoordinates(currentCoords));
@@ -78,7 +75,7 @@ public abstract class Automaton {
 
 
     //dla danego setu współrzędnych znajduje stany komórek pod tymi współrzędnymi i tworzy set celli
-    private Set<Cell> mapCoordinates (Set<CellCoordinates> cellCoordinates){
+    protected Set<Cell> mapCoordinates (Set<CellCoordinates> cellCoordinates){
         Set<Cell> cellSet = new HashSet<>();
         for(CellCoordinates tmpCoords : cellCoordinates){
             cellSet.add(new Cell(cells.get(tmpCoords), tmpCoords));
@@ -86,6 +83,9 @@ public abstract class Automaton {
         return cellSet;
     }
 
+    public Map<CellCoordinates, CellState> getCells(){
+        return cells;
+    }
 
 
     //protected abstract void initialize();
