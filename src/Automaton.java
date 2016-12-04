@@ -87,8 +87,4 @@ public abstract class Automaton {
         return cells;
     }
 
-
-    //protected abstract void initialize();
-    //protected abstract void initializeState();
-    // abstract void changeCellStateToAlive(int x, int y);
 }

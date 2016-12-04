@@ -1,19 +1,30 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Set;
 
 public class GameOfLifeRules {
     public Set<Integer> remainsAlive;
     public Set<Integer> borns;
 
-    public GameOfLifeRules(){
-
+    public GameOfLifeRules(String remainsAlive, String borns){
+        initializeRules(remainsAlive, borns);
     }
 
-    public void initializeRules(Set<Integer> a, Set<Integer> b){
-        //przerobić żeby z parametrów stringa robił sety
+    private void initializeRules(String remainsAlive, String borns){
+        this.remainsAlive = stringToSet(remainsAlive);
+        this.borns = stringToSet(borns);
+    }
 
-        this.remainsAlive = a;
-        this.borns = b;
+    private Set<Integer> stringToSet (String p1){
+        String delimiter = "[ ]+";
+        String[] tokens = p1.split(delimiter);
+        Integer[] intTokens = new Integer[tokens.length];
+        for(int i=0; i<tokens.length; ++i){
+            intTokens[i] = Integer.parseInt(tokens[i]);
+        }
+        Set<Integer> returnSet = new HashSet<>(Arrays.asList(intTokens));
+        return returnSet;
     }
 
     public CellState determineState (int numberOfAliveNeighbors, CellState state){

@@ -12,14 +12,9 @@ public class GameOfLifeRulesTest {
     @Test
     public void determineStateTest_CellHas3NeighborsAndIsDead(){
         Cell cell = new Cell(BinaryState.DEAD, new Coordinates2D(2,3));
-        //cell.state = BinaryState.DEAD;
-        GameOfLifeRules golRules = new GameOfLifeRules();
-        Set<Integer> remainsAlive = new HashSet<>();
-        remainsAlive.add(2);
-        remainsAlive.add(3);
-        Set<Integer> borns = new HashSet<>();
-        borns.add(3);
-        golRules.initializeRules(remainsAlive, borns);
+        String remainsAlive = "2 3";
+        String borns ="3";
+        GameOfLifeRules golRules = new GameOfLifeRules(remainsAlive, borns);
 
         Assert.assertEquals("Should be alive", BinaryState.ALIVE,
                 golRules.determineState(3, cell.state));
@@ -28,14 +23,9 @@ public class GameOfLifeRulesTest {
     @Test
     public void determineStateTest_CellHas2NeighborsAndIsDead(){
         Cell cell = new Cell(BinaryState.DEAD, new Coordinates2D(2,3));
-        //cell.state = BinaryState.DEAD;
-        GameOfLifeRules golRules = new GameOfLifeRules();
-        Set<Integer> remainsAlive = new HashSet<>();
-        remainsAlive.add(2);
-        remainsAlive.add(3);
-        Set<Integer> borns = new HashSet<>();
-        borns.add(3);
-        golRules.initializeRules(remainsAlive, borns);
+        String remainsAlive = "2 3";
+        String borns ="3";
+        GameOfLifeRules golRules = new GameOfLifeRules(remainsAlive, borns);
 
         Assert.assertEquals("Should be dead", BinaryState.DEAD,
                 golRules.determineState(2, cell.state));
@@ -44,16 +34,12 @@ public class GameOfLifeRulesTest {
     @Test
     public void determineStateTest_CellHas2NeighborsAndIsAlive(){
         Cell cell = new Cell(BinaryState.ALIVE, new Coordinates2D(2,3));
-        //cell.state = BinaryState.ALIVE;
-        GameOfLifeRules golRules = new GameOfLifeRules();
-        Set<Integer> remainsAlive = new HashSet<>();
-        remainsAlive.add(2);
-        remainsAlive.add(3);
-        Set<Integer> borns = new HashSet<>();
-        borns.add(3);
-        golRules.initializeRules(remainsAlive, borns);
+        String remainsAlive = "2 3";
+        String borns ="3";
+        GameOfLifeRules golRules = new GameOfLifeRules(remainsAlive, borns);
 
         Assert.assertEquals("Should be alive", BinaryState.ALIVE,
                 golRules.determineState(2, cell.state));
     }
+
 }

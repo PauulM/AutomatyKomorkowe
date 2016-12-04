@@ -12,7 +12,7 @@ public class Automaton2DimTest {
         Map<CellCoordinates, CellState> map = new HashMap<>();
         CellNeighborhood neighborhood = new MoorNeighborhood(5,5,false,1);
         CellStateFactory factory = new GeneralStateFactory(map);
-        GameOfLifeRules golRules = new GameOfLifeRules();
+        GameOfLifeRules golRules = new GameOfLifeRules("2 3", "3");
         Automaton2Dim gameOfLife = new GameOfLife(5, 5, factory, neighborhood,golRules);
         CellCoordinates coords = new Coordinates2D(1,2);
         Assert.assertEquals("Cell (1,2) should have next cell", true, gameOfLife.hasNextCoordinates(coords));
@@ -23,7 +23,7 @@ public class Automaton2DimTest {
         Map<CellCoordinates, CellState> map = new HashMap<>();
         CellNeighborhood neighborhood = new MoorNeighborhood(5,5,false,1);
         CellStateFactory factory = new GeneralStateFactory(map);
-        GameOfLifeRules golRules = new GameOfLifeRules();
+        GameOfLifeRules golRules = new GameOfLifeRules("2 3", "3");
         Automaton2Dim gameOfLife = new GameOfLife(5, 5, factory, neighborhood,golRules);
         CellCoordinates coords = new Coordinates2D(4,4);
         Assert.assertEquals("Cell (1,2) should have next cell", false, gameOfLife.hasNextCoordinates(coords));
@@ -34,7 +34,7 @@ public class Automaton2DimTest {
         Map<CellCoordinates, CellState> map = new HashMap<>();
         CellNeighborhood neighborhood = new MoorNeighborhood(5,5,false,1);
         CellStateFactory factory = new GeneralStateFactory(map);
-        GameOfLifeRules golRules = new GameOfLifeRules();
+        GameOfLifeRules golRules = new GameOfLifeRules("2 3", "3");
         Automaton2Dim gameOfLife = new GameOfLife(5, 5, factory, neighborhood,golRules);
         CellCoordinates coords = new Coordinates2D(4,2);
         Assert.assertEquals("Cell (1,2) should have next cell", true, gameOfLife.hasNextCoordinates(coords));
@@ -45,7 +45,7 @@ public class Automaton2DimTest {
         Map<CellCoordinates, CellState> map = new HashMap<>();
         CellNeighborhood neighborhood = new MoorNeighborhood(5,5,false,1);
         CellStateFactory factory = new GeneralStateFactory(map);
-        GameOfLifeRules golRules = new GameOfLifeRules();
+        GameOfLifeRules golRules = new GameOfLifeRules("2 3", "3");
         Automaton2Dim gameOfLife = new GameOfLife(5, 5, factory, neighborhood,golRules);
         CellCoordinates coords = new Coordinates2D(2,4);
         Assert.assertEquals("Cell (1,2) should have next cell", true, gameOfLife.hasNextCoordinates(coords));
@@ -56,7 +56,7 @@ public class Automaton2DimTest {
         Map<CellCoordinates, CellState> map = new HashMap<>();
         CellNeighborhood neighborhood = new MoorNeighborhood(5,5,false,1);
         CellStateFactory factory = new GeneralStateFactory(map);
-        GameOfLifeRules golRules = new GameOfLifeRules();
+        GameOfLifeRules golRules = new GameOfLifeRules("2 3", "3");
         Automaton2Dim gameOfLife = new GameOfLife(5, 5, factory, neighborhood,golRules);
         CellCoordinates coords = new Coordinates2D(2,2);
         CellCoordinates expectedCoords = new Coordinates2D(3,2);
@@ -74,7 +74,7 @@ public class Automaton2DimTest {
         Map<CellCoordinates, CellState> map = new HashMap<>();
         CellNeighborhood neighborhood = new MoorNeighborhood(5,5,false,1);
         CellStateFactory factory = new GeneralStateFactory(map);
-        GameOfLifeRules golRules = new GameOfLifeRules();
+        GameOfLifeRules golRules = new GameOfLifeRules("2 3", "3");
         Automaton2Dim gameOfLife = new GameOfLife(5, 5, factory, neighborhood,golRules);
         CellCoordinates coords = new Coordinates2D(4,2);
         CellCoordinates expectedCoords = new Coordinates2D(0,3);
