@@ -53,7 +53,7 @@
                   <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Von Neumann neighborhood" />
                   <Button mnemonicParsing="false" onAction="#submitButton" prefHeight="41.0" prefWidth="136.0" text="SUBMIT" />
                   <TextField fx:id="remainsAliveField" prefHeight="41.0" prefWidth="136.0" promptText="Remains alive" />
-                  <TextField fx:id="diesField" prefHeight="41.0" prefWidth="136.0" promptText="Dies" />
+                  <TextField fx:id="bornsField" prefHeight="41.0" prefWidth="136.0" promptText="Borns" />
                   <Button mnemonicParsing="false" onAction="#submitGameOfLifeRulesButton" prefHeight="41.0" prefWidth="136.0" text="SUBMIT GoL RULES" />
                </children>
             </VBox>
@@ -61,6 +61,6 @@
       </HBox>
    </left>
    <center>
-      <HBox fx:id="boardHbox" alignment="TOP_RIGHT" maxHeight="500.0" maxWidth="500.0" BorderPane.alignment="CENTER" />
+      <HBox fx:id="boardHbox" alignment="CENTER" maxHeight="500.0" maxWidth="500.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

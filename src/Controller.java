@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Controller {
@@ -23,6 +24,11 @@ public class Controller {
     private CellNeighborhood neighborsStrategy;
     private GameOfLifeRules golRules;
     private boolean wrapping = false;
+    private GUIBoard guiBoard;
+
+    public Controller(){
+        this.map = new HashMap<>();
+    }
 
     public void setStage(Stage stage){
         this.stage = stage;
@@ -33,8 +39,8 @@ public class Controller {
     }
 
     public void gameOfLifeButton(){
-
-        //automaton = new GameOfLife(this.width, this.height, )
+        CellStateFactory factory = new GeneralStateFactory(map);
+        Automaton gameOfLife = new GameOfLife(this.width, this.height, factory, this.neighborsStrategy, golRules);
 
         //1.tworzy factory
         //2. tworzy automaton
@@ -47,7 +53,8 @@ public class Controller {
     }
 
     private String getTextFromTextField(String fieldId){
-        return (((TextField)scene.lookup(fieldId)).getText());
+        String toReturn = ((TextField)scene.lookup(fieldId)).getText();
+        return toReturn;
     }
 
     public void submitButton(){
@@ -61,25 +68,29 @@ public class Controller {
     }
 
     public void wrappingButton(){
-        if(this.wrapping == false)
-            this.wrapping = true;
-        else
-            this.wrapping = false;
+        //odkomentować po dorobieniu zawijania
+//        if(this.wrapping == false)
+//            this.wrapping = true;
+//        else
+//            this.wrapping = false;
     }
 
     public void initializeBoardButton(){
         //tworzy planszę na której można wybrać komórki startowe
-        
+
         HBox boardHbox = (HBox) scene.lookup("#boardHbox");
-        Button button = new Button("abc");
-        boardHbox.getChildren().addAll(button);
+        guiBoard = new GUIBoard(this.width, this.height, boardHbox, this.map);
+        guiBoard.initializeBoard();
+        this.map = guiBoard.getMap();
     }
 
     public void acceptStartingBoardButton(){
         //akceptuje wybrane komórki startowe
-        //inicjalizuje map
+        this.map=guiBoard.getMap();
 
     }
+
+    
 
     public void printIfClicked(){
         System.out.println("click");
