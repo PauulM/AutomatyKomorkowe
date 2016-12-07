@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="41.0" prefWidth="548.0" spacing="30.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#initializeBoardButton" prefHeight="41.0" prefWidth="130.0" text="INITIALIZE BOARD" />
+            <Button mnemonicParsing="false" onAction="#acceptStartingBoardButton" prefHeight="41.0" prefWidth="160.0" text="ACCEPT STARTING BOARD" />
+            <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="99.0" text="NEXT" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" />
+         </padding>
+      </HBox>
+   </bottom>
+   <left>
+      <HBox prefHeight="465.0" prefWidth="282.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox layoutX="15.0" layoutY="16.0" prefHeight="568.0" prefWidth="136.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#gameOfLifeButton" prefHeight="67.0" prefWidth="136.0" text="Game of Life" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="136.0" text="Langton Ant">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="136.0" text="Wireworld">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox layoutX="189.0" layoutY="16.0" prefHeight="568.0" prefWidth="136.0" spacing="10.0">
+               <children>
+                  <TextField fx:id="widthField" prefHeight="41.0" prefWidth="136.0" promptText="WIDTH" />
+                  <TextField fx:id="heightField" prefHeight="41.0" prefWidth="136.0" promptText="HEIGHT" />
+                  <TextField fx:id="radiusField" prefHeight="41.0" prefWidth="136.0" promptText="RADIUS" />
+                  <Button mnemonicParsing="false" onAction="#wrappingButton" prefHeight="25.0" prefWidth="136.0" text="Wrapping" />
+                  <Button mnemonicParsing="false" onAction="#moorNeighborhoodButton" prefHeight="25.0" prefWidth="136.0" text="Moor neighborhood" />
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Von Neumann neighborhood" />
+                  <Button mnemonicParsing="false" onAction="#submitButton" prefHeight="41.0" prefWidth="136.0" text="SUBMIT" />
+                  <TextField fx:id="remainsAliveField" prefHeight="41.0" prefWidth="136.0" promptText="Remains alive" />
+                  <TextField fx:id="diesField" prefHeight="41.0" prefWidth="136.0" promptText="Dies" />
+                  <Button mnemonicParsing="false" onAction="#submitGameOfLifeRulesButton" prefHeight="41.0" prefWidth="136.0" text="SUBMIT GoL RULES" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </left>
+   <center>
+      <HBox fx:id="boardHbox" alignment="TOP_RIGHT" maxHeight="500.0" maxWidth="500.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
