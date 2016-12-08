@@ -25,6 +25,7 @@ public class Controller {
     private GameOfLifeRules golRules;
     private boolean wrapping = false;
     private GUIBoard guiBoard;
+    private HBox boardHbox;
 
     public Controller(){
         this.map = new HashMap<>();
@@ -39,12 +40,9 @@ public class Controller {
     }
 
     public void gameOfLifeButton(){
-        CellStateFactory factory = new GeneralStateFactory(map);
-        Automaton gameOfLife = new GameOfLife(this.width, this.height, factory, this.neighborsStrategy, golRules);
-
-        //1.tworzy factory
-        //2. tworzy automaton
-        //3. insert structure
+        factory = new GeneralStateFactory(map);
+        automaton = new GameOfLife(this.width, this.height, this.factory, this.neighborsStrategy, golRules);
+        automaton.insertStructure(map);
     }
 
     public void submitGameOfLifeRulesButton(){
@@ -78,7 +76,7 @@ public class Controller {
     public void initializeBoardButton(){
         //tworzy planszę na której można wybrać komórki startowe
 
-        HBox boardHbox = (HBox) scene.lookup("#boardHbox");
+        boardHbox = (HBox) scene.lookup("#boardHbox");
         guiBoard = new GUIBoard(this.width, this.height, boardHbox, this.map);
         guiBoard.initializeBoard();
         this.map = guiBoard.getMap();
@@ -90,7 +88,18 @@ public class Controller {
 
     }
 
-    
+    public void nextButton(){
+        this.automaton = this.automaton.nextState();
+        this.map = this.automaton.getCells();
+        updateBoard();
+    }
+
+    private void updateBoard(){
+        this.boardHbox.getChildren().clear();
+        guiBoard = new GUIBoard(this.width, this.height, boardHbox, this.map);
+        guiBoard.drawUpdatedBoard();
+        this.map = guiBoard.getMap();
+    }
 
     public void printIfClicked(){
         System.out.println("click");

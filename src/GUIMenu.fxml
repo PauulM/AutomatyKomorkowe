@@ -14,7 +14,7 @@
          <children>
             <Button mnemonicParsing="false" onAction="#initializeBoardButton" prefHeight="41.0" prefWidth="130.0" text="INITIALIZE BOARD" />
             <Button mnemonicParsing="false" onAction="#acceptStartingBoardButton" prefHeight="41.0" prefWidth="160.0" text="ACCEPT STARTING BOARD" />
-            <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="99.0" text="NEXT" />
+            <Button mnemonicParsing="false" onAction="#nextButton" prefHeight="41.0" prefWidth="99.0" text="NEXT" />
          </children>
          <padding>
             <Insets bottom="10.0" />
@@ -49,9 +49,9 @@
                   <TextField fx:id="heightField" prefHeight="41.0" prefWidth="136.0" promptText="HEIGHT" />
                   <TextField fx:id="radiusField" prefHeight="41.0" prefWidth="136.0" promptText="RADIUS" />
                   <Button mnemonicParsing="false" onAction="#wrappingButton" prefHeight="25.0" prefWidth="136.0" text="Wrapping" />
+                  <Button mnemonicParsing="false" onAction="#submitButton" prefHeight="41.0" prefWidth="136.0" text="SUBMIT" />
                   <Button mnemonicParsing="false" onAction="#moorNeighborhoodButton" prefHeight="25.0" prefWidth="136.0" text="Moor neighborhood" />
                   <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Von Neumann neighborhood" />
-                  <Button mnemonicParsing="false" onAction="#submitButton" prefHeight="41.0" prefWidth="136.0" text="SUBMIT" />
                   <TextField fx:id="remainsAliveField" prefHeight="41.0" prefWidth="136.0" promptText="Remains alive" />
                   <TextField fx:id="bornsField" prefHeight="41.0" prefWidth="136.0" promptText="Borns" />
                   <Button mnemonicParsing="false" onAction="#submitGameOfLifeRulesButton" prefHeight="41.0" prefWidth="136.0" text="SUBMIT GoL RULES" />

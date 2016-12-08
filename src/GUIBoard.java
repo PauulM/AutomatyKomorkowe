@@ -25,7 +25,7 @@ public class GUIBoard {
             VBox tmpVbox = new VBox();
             boardHbox.getChildren().addAll(tmpVbox);
             for(int j=0; j<height; ++j){
-                CellButton tmpCellButton = new CellButton(new Coordinates2D(i,j), BinaryState.DEAD);
+                CellButton tmpCellButton = new CellButton(new Coordinates2D(i,j), BinaryState.DEAD, map);
                 this.board[i][j] = tmpCellButton;
                 tmpVbox.getChildren().addAll(this.board[i][j]);
             }
@@ -39,6 +39,20 @@ public class GUIBoard {
                 map.put(board[i][j].getCoords(),board[i][j].getState());
             }
         }
+    }
+
+    public void drawUpdatedBoard(){
+        for (int i=0; i<width; ++i){
+            VBox tmpVbox = new VBox();
+            boardHbox.getChildren().addAll(tmpVbox);
+            for (int j=0; j<height; ++j){
+                Coordinates2D tmpCoords = new Coordinates2D(i,j);
+                CellButton tmpCellButton = new CellButton(tmpCoords, map.get(tmpCoords), map);
+                this.board[i][j] = tmpCellButton;
+                tmpVbox.getChildren().addAll(this.board[i][j]);
+            }
+        }
+        boardToMap();
     }
 
     public Map<CellCoordinates, CellState> getMap(){
