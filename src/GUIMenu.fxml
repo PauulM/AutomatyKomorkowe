@@ -14,7 +14,6 @@
          <children>
             <Button mnemonicParsing="false" onAction="#initializeBoardButton" prefHeight="41.0" prefWidth="130.0" text="INITIALIZE BOARD" />
             <Button mnemonicParsing="false" onAction="#acceptStartingBoardButton" prefHeight="41.0" prefWidth="160.0" text="ACCEPT STARTING BOARD" />
-            <Button mnemonicParsing="false" onAction="#nextButton" prefHeight="41.0" prefWidth="99.0" text="NEXT" />
          </children>
          <padding>
             <Insets bottom="10.0" />
@@ -22,40 +21,39 @@
       </HBox>
    </bottom>
    <left>
-      <HBox prefHeight="465.0" prefWidth="282.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="559.0" prefWidth="250.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox layoutX="15.0" layoutY="16.0" prefHeight="568.0" prefWidth="136.0" spacing="10.0">
+            <VBox layoutX="189.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#gameOfLifeButton" prefHeight="67.0" prefWidth="136.0" text="Game of Life" textAlignment="CENTER">
+                  <Label prefHeight="25.0" prefWidth="136.0" text="Main menu">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="136.0" text="Langton Ant">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="136.0" text="Wireworld">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-               </children>
-            </VBox>
-            <VBox layoutX="189.0" layoutY="16.0" prefHeight="568.0" prefWidth="136.0" spacing="10.0">
-               <children>
-                  <TextField fx:id="widthField" prefHeight="41.0" prefWidth="136.0" promptText="WIDTH" />
-                  <TextField fx:id="heightField" prefHeight="41.0" prefWidth="136.0" promptText="HEIGHT" />
-                  <TextField fx:id="radiusField" prefHeight="41.0" prefWidth="136.0" promptText="RADIUS" />
-                  <Button mnemonicParsing="false" onAction="#wrappingButton" prefHeight="25.0" prefWidth="136.0" text="Wrapping" />
+                  </Label>
+                  <TextField fx:id="widthField" prefHeight="41.0" prefWidth="136.0" promptText="WIDTH" text="20" />
+                  <TextField fx:id="heightField" prefHeight="41.0" prefWidth="136.0" promptText="HEIGHT" text="20" />
+                  <TextField fx:id="radiusField" prefHeight="41.0" prefWidth="136.0" promptText="RADIUS" text="1" />
                   <Button mnemonicParsing="false" onAction="#submitButton" prefHeight="41.0" prefWidth="136.0" text="SUBMIT" />
+                  <Button mnemonicParsing="false" onAction="#wrappingButton" prefHeight="25.0" prefWidth="136.0" text="Wrapping" />
                   <Button mnemonicParsing="false" onAction="#moorNeighborhoodButton" prefHeight="25.0" prefWidth="136.0" text="Moor neighborhood" />
                   <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Von Neumann neighborhood" />
-                  <TextField fx:id="remainsAliveField" prefHeight="41.0" prefWidth="136.0" promptText="Remains alive" />
-                  <TextField fx:id="bornsField" prefHeight="41.0" prefWidth="136.0" promptText="Borns" />
+                  <Label prefHeight="25.0" prefWidth="120.0" text="GoL" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="remainsAliveField" prefHeight="41.0" prefWidth="136.0" promptText="Remains alive" text="2 3" />
+                  <TextField fx:id="bornsField" prefHeight="41.0" prefWidth="136.0" promptText="Borns" text="3" />
                   <Button mnemonicParsing="false" onAction="#submitGameOfLifeRulesButton" prefHeight="41.0" prefWidth="136.0" text="SUBMIT GoL RULES" />
                </children>
+               <padding>
+                  <Insets left="20.0" top="20.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="559.0" prefWidth="142.0">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
             </VBox>
          </children>
       </HBox>
@@ -63,4 +61,33 @@
    <center>
       <HBox fx:id="boardHbox" alignment="CENTER" maxHeight="500.0" maxWidth="500.0" BorderPane.alignment="CENTER" />
    </center>
+   <right>
+      <VBox prefHeight="559.0" prefWidth="155.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#gameOfLifeButton" prefHeight="67.0" prefWidth="136.0" text="Game of Life" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="136.0" text="Langton Ant">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#wireworldButton" prefHeight="67.0" prefWidth="136.0" text="Wireworld">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#nextButton" prefHeight="67.0" prefWidth="136.0" text="NEXT">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#resetButton" text="Reset" />
+         </children>
+         <padding>
+            <Insets right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </right>
 </BorderPane>

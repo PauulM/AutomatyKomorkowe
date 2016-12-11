@@ -9,24 +9,41 @@ public class GUIBoard {
     private int width;
     private int height;
     private HBox boardHbox;
+    private Automaton currentAutomaton;
     private Map<CellCoordinates, CellState> map;
     private CellButton[][] board;
 
-    public GUIBoard(int width, int height, HBox boardHbox, Map<CellCoordinates, CellState> map){
+    public GUIBoard(int width, int height, HBox boardHbox, Map<CellCoordinates,
+            CellState> map, Automaton currentAutomaton){
         this.width = width;
         this.height = height;
         this.boardHbox = boardHbox;
         this.map = map;
         this.board = new CellButton[width][height];
+        this.currentAutomaton = currentAutomaton;
     }
 
-    public void initializeBoard(){
+    public void initializeBoardGOL(){
         for (int i=0; i<width; ++i){
             VBox tmpVbox = new VBox();
             boardHbox.getChildren().addAll(tmpVbox);
             for(int j=0; j<height; ++j){
-                CellButton tmpCellButton = new CellButton(new Coordinates2D(i,j), BinaryState.DEAD, map);
-                this.board[i][j] = tmpCellButton;
+                CellButton tmpCellButtonGOL = new CellButtonGOL(new Coordinates2D(i,j), BinaryState.DEAD, map);
+                this.board[i][j] = tmpCellButtonGOL;
+                tmpVbox.getChildren().addAll(this.board[i][j]);
+            }
+        }
+        boardToMap();
+    }
+
+    public void initializeBoardWW(){
+        for (int i=0; i<width; ++i){
+            VBox tmpVbox = new VBox();
+            boardHbox.getChildren().addAll(tmpVbox);
+            for(int j=0; j<height; ++j){
+                CellButton tmpCellButtonWW = new CellButtonWW(new Coordinates2D(i,j),
+                        WireElectronState.VOID, map);
+                this.board[i][j] = tmpCellButtonWW;
                 tmpVbox.getChildren().addAll(this.board[i][j]);
             }
         }
@@ -45,9 +62,13 @@ public class GUIBoard {
         for (int i=0; i<width; ++i){
             VBox tmpVbox = new VBox();
             boardHbox.getChildren().addAll(tmpVbox);
+            CellButton tmpCellButton;
             for (int j=0; j<height; ++j){
                 Coordinates2D tmpCoords = new Coordinates2D(i,j);
-                CellButton tmpCellButton = new CellButton(tmpCoords, map.get(tmpCoords), map);
+                if(currentAutomaton instanceof GameOfLife)
+                    tmpCellButton = new CellButtonGOL(tmpCoords, map.get(tmpCoords), map);
+                else
+                    tmpCellButton = new CellButtonWW(tmpCoords, map.get(tmpCoords), map);
                 this.board[i][j] = tmpCellButton;
                 tmpVbox.getChildren().addAll(this.board[i][j]);
             }
@@ -58,5 +79,4 @@ public class GUIBoard {
     public Map<CellCoordinates, CellState> getMap(){
         return map;
     }
-
 }

@@ -4,7 +4,6 @@ import java.util.Set;
 public class GameOfLife extends Automaton2Dim {
 
     private GameOfLifeRules golRules;
-    //private CellNeighborhood neighborhoodKind;
 
     public GameOfLife(int width,int height,CellStateFactory cellStateFactory,
                       CellNeighborhood cellNeighborhood, GameOfLifeRules rules){
