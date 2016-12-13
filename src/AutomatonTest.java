@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 public class AutomatonTest {
 
     @Test
-    public void CzyDziala(){
+    public void GeneralTest_CheckIfMapsAreEqual(){
         Map<CellCoordinates, CellState> map = new HashMap<>();
 
         map.put(new Coordinates2D(0,0), BinaryState.DEAD);
