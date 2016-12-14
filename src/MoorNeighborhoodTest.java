@@ -12,7 +12,7 @@ import java.util.Set;
 
 public class MoorNeighborhoodTest {
     @Test
-    public void Check2x3NeighboursNoWrapRadius1() {
+    public void cellNeighborsTest_Check2x3NeighboursNoWrapRadius1() {
         MoorNeighborhood testMN = new MoorNeighborhood(5, 5, false, 1);
         Cell cell = new Cell(BinaryState.ALIVE, new Coordinates2D(2,3));
         //cell.coords = new Coordinates2D(2,3);
@@ -32,7 +32,7 @@ public class MoorNeighborhoodTest {
     }
 
     @Test
-    public void Check4x1NeighboursNoWrapRadius1() {
+    public void cellNeighborsTest_Check4x1NeighboursNoWrapRadius1() {
         MoorNeighborhood testMN = new MoorNeighborhood(5, 5, false, 1);
         Cell cell = new Cell(BinaryState.ALIVE, new Coordinates2D(4,1));
         //cell.coords = new Coordinates2D(4,1);
@@ -49,7 +49,7 @@ public class MoorNeighborhoodTest {
     }
 
     @Test
-    public void Check0x4NeighboursNoWrapRadius1() {
+    public void cellNeighborsTest_Check0x4NeighboursNoWrapRadius1() {
         MoorNeighborhood testMN = new MoorNeighborhood(5, 5, false, 1);
         Cell cell = new Cell(BinaryState.ALIVE, new Coordinates2D(0,4));
         //cell.coords = new Coordinates2D(0,4);
@@ -64,7 +64,7 @@ public class MoorNeighborhoodTest {
     }
 
     @Test
-    public void Check4x1NeighboursNoWrapRadius2() {
+    public void cellNeighborsTest_Check4x1NeighboursNoWrapRadius2() {
         MoorNeighborhood testMN = new MoorNeighborhood(5, 5, false, 2);
         Cell cell = new Cell(BinaryState.ALIVE, new Coordinates2D(4,1));
         //cell.coords = new Coordinates2D(4,1);
@@ -87,7 +87,7 @@ public class MoorNeighborhoodTest {
     }
 
     @Test
-    public void Check0x3NeighboursWithWrapRadius1() {
+    public void cellNeighborsTest_Check0x3NeighboursWithWrapRadius1() {
         MoorNeighborhood testMN = new MoorNeighborhood(4, 4, true, 1);
         Cell cell = new Cell(BinaryState.ALIVE, new Coordinates2D(0,3));
         //cell.coords = new Coordinates2D(0,4);
@@ -107,10 +107,9 @@ public class MoorNeighborhoodTest {
     }
 
     @Test
-    public void Check3x1NeighboursWithWrapRadius2() {
+    public void cellNeighborsTest_Check3x1NeighboursWithWrapRadius2() {
         MoorNeighborhood testMN = new MoorNeighborhood(4, 4, true, 2);
         Cell cell = new Cell(BinaryState.ALIVE, new Coordinates2D(3, 1));
-        //cell.coords = new Coordinates2D(0,4);
         HashSet<CellCoordinates> neighbors = (HashSet<CellCoordinates>) testMN.cellNeighbors(cell.coords);
         Set<CellCoordinates> expectedNeighbors = new HashSet<>();
         expectedNeighbors.add(new Coordinates2D(1, 3));
@@ -138,7 +137,7 @@ public class MoorNeighborhoodTest {
         expectedNeighbors.add(new Coordinates2D(0, 3));
         expectedNeighbors.add(new Coordinates2D(1, 3));
         //16 sąsiadów a nie 24 bo się powtarzają a jest set
-        Assert.assertEquals("Should have 24 neighbors", 16, neighbors.size());
+        Assert.assertEquals(16, neighbors.size());
         //Assert.assertEquals("Wrong neighborhood", true, neighbors.equals(expectedNeighbors));
     }
 }

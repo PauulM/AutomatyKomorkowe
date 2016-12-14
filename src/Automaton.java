@@ -30,12 +30,6 @@ public abstract class Automaton {
 
     public void insertStructure (Map<CellCoordinates, CellState> structure){
         this.cells = structure;
-//        CellIterator iterator = cellIterator();
-//        while(iterator.hasNext()){
-//            Cell tmpCell = iterator.next();
-//            cells.put(tmpCell.coords,stateFactory.initialState(tmpCell.coords));
-//        }
-
     }
 
     public class CellIterator{
@@ -54,9 +48,6 @@ public abstract class Automaton {
             Cell tmpCell = new Cell(cells.get(currentCoords), currentCoords);
             return tmpCell;
 
-//            Cell tmpCell = new Cell(cells.get(nextCoordinates(currentCoords)), nextCoordinates(currentCoords));
-//            currentCoords = nextCoordinates(currentCoords);
-//            return tmpCell;
         }
         public void setState(CellState state){
             cells.put(currentCoords, state);
