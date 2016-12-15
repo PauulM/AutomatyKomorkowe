@@ -1,11 +1,18 @@
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Controller {
 
@@ -24,6 +31,10 @@ public class Controller {
     private GUIBoard guiBoard;
     private HBox boardHbox;
     private Label commentBox;
+    private Timer timer;
+    private int timeInMs;
+    private TimerTask clickNextButton;
+    private Timeline timeline;
 
     public Controller(){
         this.map = new HashMap<>();
@@ -150,7 +161,7 @@ public class Controller {
     }
 
     public void nextButton(){
-        if(automaton == null){
+        if(automaton == null || guiBoard == null || boardHbox == null){
             commentBox.setText("cannot create next state, some data might be missing");
             return;
         }
@@ -184,11 +195,69 @@ public class Controller {
     }
 
     public void resetButton(){
-        boardHbox.getChildren().clear();
+        if(boardHbox != null)
+            boardHbox.getChildren().clear();
         golRules = null;
         guiBoard = null;
         currentAutomaton = null;
+        timer = null;
+        clickNextButton = null;
         commentBox.setText("settings reset");
     }
 
+    public void submitTimerButton(){
+        timeInMs = Integer.parseInt(getTextFromTextField("#time"));
+        if(timeInMs < 1)
+            timeInMs = 1000;
+        commentBox.setText("invalid time, time set to 1000ms");
+        this.timeline = new Timeline();
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(timeInMs),
+                event -> nextButton()));
+        commentBox.setText("created new Timer, period is " + Integer.toString(timeInMs) + "ms");
+    }
+
+    public void startTimerButton(){
+        if(timeline == null){
+            commentBox.setText("cannot start timer, some data might be missing");
+            return;
+        }
+        timeline.play();
+        commentBox.setText("auto Next started");
+    }
+
+    public void stopTimerButton(){
+        if(timeline == null){
+            commentBox.setText("cannot stop timer, some data might be missing");
+            return;
+        }
+        timeline.stop();
+        commentBox.setText("auto Next stopped");
+    }
+
+    public void insertGliderButton(){
+        if(guiBoard == null || !(currentAutomaton instanceof GameOfLife) || this.width < 3 || this.height < 3){
+            commentBox.setText("cannot insert Glider");
+            return;
+        }
+        boardHbox.getChildren().clear();
+        guiBoard = null;
+        initializeBoardButton();
+        this.guiBoard.insertGlider();
+        updateBoard();
+        commentBox.setText("Glider inserted");
+    }
+
+    public void insertLWSSButton(){
+        if(guiBoard == null || !(currentAutomaton instanceof GameOfLife) || this.width < 5 || this.height < 4){
+            commentBox.setText("cannot insert LWSS");
+            return;
+        }
+        boardHbox.getChildren().clear();
+        guiBoard = null;
+        initializeBoardButton();
+        this.guiBoard.insertLWSS();
+        updateBoard();
+        commentBox.setText("LWSS inserted");
+    }
 }

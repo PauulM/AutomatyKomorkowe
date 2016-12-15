@@ -77,8 +77,33 @@ public class GUIBoard {
         }
         boardToMap();
     }
-
     public Map<CellCoordinates, CellState> getMap(){
         return map;
+    }
+
+    public void insertGlider(){
+        int leftTopCornerCoordX = width/2 - 1;
+        int leftTopCornerCoordY = height/2 - 1;
+        board[leftTopCornerCoordX][leftTopCornerCoordY].state = BinaryState.ALIVE;
+        board[leftTopCornerCoordX+1][leftTopCornerCoordY].state = BinaryState.ALIVE;
+        board[leftTopCornerCoordX+2][leftTopCornerCoordY].state = BinaryState.ALIVE;
+        board[leftTopCornerCoordX][leftTopCornerCoordY+1].state = BinaryState.ALIVE;
+        board[leftTopCornerCoordX+1][leftTopCornerCoordY+2].state = BinaryState.ALIVE;
+        boardToMap();
+    }
+
+    public void insertLWSS(){
+        int leftTopCornerCoordX = width/2 - 2;
+        int leftTopCornerCoordY = height/2 - 2;
+        board[leftTopCornerCoordX+1][leftTopCornerCoordY].state = BinaryState.ALIVE;
+        board[leftTopCornerCoordX+4][leftTopCornerCoordY].state = BinaryState.ALIVE;
+        board[leftTopCornerCoordX][leftTopCornerCoordY+1].state = BinaryState.ALIVE;
+        board[leftTopCornerCoordX][leftTopCornerCoordY+2].state = BinaryState.ALIVE;
+        board[leftTopCornerCoordX+4][leftTopCornerCoordY+2].state = BinaryState.ALIVE;
+        board[leftTopCornerCoordX][leftTopCornerCoordY+3].state = BinaryState.ALIVE;
+        board[leftTopCornerCoordX+1][leftTopCornerCoordY+3].state = BinaryState.ALIVE;
+        board[leftTopCornerCoordX+2][leftTopCornerCoordY+3].state = BinaryState.ALIVE;
+        board[leftTopCornerCoordX+3][leftTopCornerCoordY+3].state = BinaryState.ALIVE;
+        boardToMap();
     }
 }

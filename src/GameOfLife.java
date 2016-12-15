@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Set;
 
 public class GameOfLife extends Automaton2Dim {

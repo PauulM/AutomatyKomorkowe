@@ -46,7 +46,7 @@
                   <Button mnemonicParsing="false" onAction="#vonNeumanNeighborhoodButton" prefHeight="25.0" prefWidth="136.0" text="Von Neumann neighborhood" />
                   <Label prefHeight="25.0" prefWidth="120.0" text="GoL" textAlignment="CENTER">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="20.0" />
                      </font>
                   </Label>
                   <TextField fx:id="remainsAliveField" prefHeight="41.0" prefWidth="136.0" promptText="Remains alive" text="2 3" />
@@ -73,21 +73,51 @@
    <right>
       <VBox prefHeight="559.0" prefWidth="155.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#gameOfLifeButton" prefHeight="67.0" prefWidth="136.0" text="Game of Life" textAlignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#gameOfLifeButton" prefHeight="35.0" prefWidth="136.0" text="Game of Life" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#wireworldButton" prefHeight="67.0" prefWidth="136.0" text="Wireworld">
+            <Button mnemonicParsing="false" onAction="#wireworldButton" prefHeight="35.0" prefWidth="135.0" text="Wireworld">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#nextButton" prefHeight="67.0" prefWidth="136.0" text="NEXT">
+            <Button fx:id="nextButtonId" mnemonicParsing="false" onAction="#nextButton" prefHeight="35.0" prefWidth="135.0" text="NEXT">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Button>
             <Button mnemonicParsing="false" onAction="#resetButton" prefHeight="35.0" prefWidth="136.0" text="Reset" />
+            <VBox spacing="10.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                     <children>
+                        <Label prefHeight="44.0" prefWidth="135.0" text="GoL Structures">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Button mnemonicParsing="false" onAction="#insertGliderButton" prefHeight="25.0" prefWidth="136.0" text="Glider" />
+                        <Button mnemonicParsing="false" onAction="#insertLWSSButton" prefHeight="25.0" prefWidth="136.0" text="LWSS" />
+                     </children>
+                  </VBox>
+                  <Label prefHeight="44.0" prefWidth="135.0" text="Timer">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="time" prefHeight="36.0" prefWidth="135.0" promptText="Time [ms]" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </VBox>
+            <Button mnemonicParsing="false" onAction="#submitTimerButton" prefHeight="26.0" prefWidth="135.0" text="Select time" />
+            <Button mnemonicParsing="false" onAction="#startTimerButton" prefHeight="25.0" prefWidth="168.0" text="Start" />
+            <Button mnemonicParsing="false" onAction="#stopTimerButton" prefHeight="25.0" prefWidth="238.0" text="Stop" />
          </children>
          <padding>
             <Insets right="20.0" top="20.0" />

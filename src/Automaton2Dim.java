@@ -2,12 +2,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class Automaton2Dim extends Automaton{
+public abstract class Automaton2Dim extends Automaton {
     private int width;
     private int height;
 
 
-    public Automaton2Dim(int width, int height,CellStateFactory cellStateFactory, CellNeighborhood cellNeighborhood){
+    public Automaton2Dim(int width, int height, CellStateFactory cellStateFactory, CellNeighborhood cellNeighborhood){
         super(cellStateFactory,cellNeighborhood, initializeBoard(width, height, cellStateFactory));
         this.width = width;
         this.height = height;
@@ -15,7 +15,7 @@ public abstract class Automaton2Dim extends Automaton{
 
     private static Map<CellCoordinates, CellState> initializeBoard(int width, int height,
                                                                    CellStateFactory cellStateFactory){
-        Map<CellCoordinates,CellState> board = new HashMap<>();
+        Map<CellCoordinates, CellState> board = new HashMap<>();
         for(int x = 0; x<width; ++x){
             for(int y = 0; y<height; ++y){
                 Coordinates2D tmpCoords2D = new Coordinates2D(x,y);
