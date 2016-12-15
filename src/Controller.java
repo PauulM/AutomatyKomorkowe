@@ -66,10 +66,14 @@ public class Controller {
     }
 
     public void submitGameOfLifeRulesButton(){
-        this.golRules = new GameOfLifeRules(getTextFromTextField("#remainsAliveField"),
-                getTextFromTextField("#bornsField"));
-        commentBox.setText("submitted GoL Rules");
-        //currentAutomaton = new GameOfLife(this.width, this.height, this.factory, this.neighborsStrategy, golRules);
+        try {
+            this.golRules = new GameOfLifeRules(getTextFromTextField("#remainsAliveField"),
+                    getTextFromTextField("#bornsField"));
+            commentBox.setText("submitted GoL Rules");
+        }
+        catch (Exception e){
+            commentBox.setText("error occured");
+        }
     }
 
     private String getTextFromTextField(String fieldId){
@@ -78,27 +82,31 @@ public class Controller {
     }
 
     public void submitButton(){
-        this.width = Integer.parseInt(getTextFromTextField("#widthField"));
-        if(this.width < 1){
-            this.width = 1;
-            commentBox.setText("invalid width, width set to 1");
+        try {
+            this.width = Integer.parseInt(getTextFromTextField("#widthField"));
+            boolean modification = false;
+            if (this.width < 1) {
+                this.width = 1;
+                modification = true;
+            }
+            this.height = Integer.parseInt(getTextFromTextField("#heightField"));
+            if (this.height < 1) {
+                this.height = 1;
+                modification = true;
+            }
+            this.radius = Integer.parseInt(getTextFromTextField("#radiusField"));
+            if (this.radius < 1) {
+                this.radius = 1;
+                modification = true;
+            }
+            if (modification == true) {
+                commentBox.setText("invalid data input, some values changed");
+            } else
+                commentBox.setText("width, height and radius set");
         }
-        else
-            commentBox.setText("submitted width, height and radius");
-        this.height = Integer.parseInt(getTextFromTextField("#heightField"));
-        if(this.height < 1){
-            this.height = 1;
-            commentBox.setText("invalid height, height set to 1");
+        catch (Exception e){
+            commentBox.setText("error occured");
         }
-        else
-            commentBox.setText("submitted width, height and radius");
-        this.radius = Integer.parseInt(getTextFromTextField("#radiusField"));
-        if(this.radius < 1){
-            this.radius = 1;
-            commentBox.setText("invalid radius, radius set to 1");
-        }
-        else
-            commentBox.setText("submitted width, height and radius");
     }
 
     public void moorNeighborhoodButton(){
@@ -206,7 +214,13 @@ public class Controller {
     }
 
     public void submitTimerButton(){
-        timeInMs = Integer.parseInt(getTextFromTextField("#time"));
+        try{
+            timeInMs = Integer.parseInt(getTextFromTextField("#time"));
+        }
+        catch(Exception e){
+            commentBox.setText("error occured");
+            return;
+        }
         if(timeInMs < 1)
             timeInMs = 1000;
         commentBox.setText("invalid time, time set to 1000ms");
