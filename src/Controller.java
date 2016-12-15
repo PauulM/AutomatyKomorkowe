@@ -43,6 +43,10 @@ public class Controller {
             commentBox.setText("cannot create Game of Life, some data might be missing");
             return;
         }
+        else if(currentAutomaton != null){
+            commentBox.setText("automaton already chosen");
+            return;
+        }
         factory = new GeneralStateFactory(map);
         automaton = new GameOfLife(this.width, this.height, this.factory, this.neighborsStrategy, golRules);
         currentAutomaton = automaton;
@@ -54,6 +58,7 @@ public class Controller {
         this.golRules = new GameOfLifeRules(getTextFromTextField("#remainsAliveField"),
                 getTextFromTextField("#bornsField"));
         commentBox.setText("submitted GoL Rules");
+        //currentAutomaton = new GameOfLife(this.width, this.height, this.factory, this.neighborsStrategy, golRules);
     }
 
     private String getTextFromTextField(String fieldId){
@@ -91,6 +96,16 @@ public class Controller {
             return;
         }
         this.neighborsStrategy = new MoorNeighborhood(this.width, this.height, this.wrapping, this.radius);
+        commentBox.setText("Moor Neighborhood chosen");
+    }
+
+    public void vonNeumanNeighborhoodButton(){
+        if(width < 1 || height < 1 || radius < 1){
+            commentBox.setText("cannot create Von Neuman Neighborhood, some data might be missing");
+            return;
+        }
+        this.neighborsStrategy = new VonNeumanNeighborhood(this.width, this.height, this.wrapping, this.radius);
+        commentBox.setText("Von Neuman Neighborhood chosen");
     }
 
     public void wrappingButton(){
@@ -110,17 +125,23 @@ public class Controller {
             commentBox.setText("board already exists");
             return;
         }
+        if (currentAutomaton == null)
+            //currentAutomaton = new Wireworld(this.width, this.height, this.factory, this.neighborsStrategy);
         if(width < 1 || height < 1 || scene == null || map == null || currentAutomaton == null){
             commentBox.setText("cannot initialize board, some data might be missing");
             return;
         }
         boardHbox = (HBox) scene.lookup("#boardHbox");
         guiBoard = new GUIBoard(this.width, this.height, boardHbox, this.map, currentAutomaton);
-        if(golRules!=null)
+        if(currentAutomaton instanceof GameOfLife)
             guiBoard.initializeBoardGOL();
-        else
+        else if (currentAutomaton instanceof Wireworld)
             guiBoard.initializeBoardWW();
-        this.map = guiBoard.getMap();
+//        if(golRules!=null)
+//            guiBoard.initializeBoardGOL();
+//        else
+//            guiBoard.initializeBoardWW();
+//        this.map = guiBoard.getMap();
     }
 
     public void acceptStartingBoardButton(){
@@ -136,17 +157,23 @@ public class Controller {
         this.automaton = this.automaton.nextState();
         this.map = this.automaton.getCells();
         updateBoard();
+        commentBox.setText("next automaton state displayed");
     }
 
     public void wireworldButton(){
-        if(map == null || neighborsStrategy == null || golRules==null){
+        if(map == null || neighborsStrategy == null){
             commentBox.setText("cannot create Wireworld, some data might be missing");
+            return;
+        }
+        else if(currentAutomaton != null){
+            commentBox.setText("automaton already chosen");
             return;
         }
         factory = new GeneralStateFactory(map);
         automaton = new Wireworld(this.width, this.height, this.factory, this.neighborsStrategy);
         currentAutomaton = automaton;
         automaton.insertStructure(map);
+        commentBox.setText("created Wireworld instance");
     }
 
     private void updateBoard(){
@@ -159,6 +186,9 @@ public class Controller {
     public void resetButton(){
         boardHbox.getChildren().clear();
         golRules = null;
+        guiBoard = null;
+        currentAutomaton = null;
+        commentBox.setText("settings reset");
     }
 
 }

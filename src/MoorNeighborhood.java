@@ -16,7 +16,7 @@ public class MoorNeighborhood implements CellNeighborhood {
         this.radius = rad;
     }
 
-
+    @Override
     public Set<CellCoordinates> cellNeighbors(CellCoordinates cell){
         if(!boardWrap)
             return searchNeighborsNoWrap(cell);

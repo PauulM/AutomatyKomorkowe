@@ -10,10 +10,17 @@
 
 <BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <bottom>
-      <HBox alignment="CENTER" prefHeight="41.0" prefWidth="548.0" spacing="30.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="41.0" prefWidth="694.0" spacing="30.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#initializeBoardButton" prefHeight="41.0" prefWidth="130.0" text="INITIALIZE BOARD" />
-            <Button mnemonicParsing="false" onAction="#acceptStartingBoardButton" prefHeight="41.0" prefWidth="160.0" text="ACCEPT STARTING BOARD" />
+            <Label fx:id="commentBox" prefHeight="99.0" prefWidth="451.0" text="Input width, height, radius and submit">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#initializeBoardButton" prefHeight="31.0" prefWidth="133.0" text="INITIALIZE BOARD" />
          </children>
          <padding>
             <Insets bottom="10.0" />
@@ -21,7 +28,7 @@
       </HBox>
    </bottom>
    <left>
-      <HBox prefHeight="559.0" prefWidth="250.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="559.0" prefWidth="174.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <VBox layoutX="189.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" spacing="10.0">
                <children>
@@ -36,7 +43,7 @@
                   <Button mnemonicParsing="false" onAction="#submitButton" prefHeight="41.0" prefWidth="136.0" text="SUBMIT" />
                   <Button mnemonicParsing="false" onAction="#wrappingButton" prefHeight="25.0" prefWidth="136.0" text="Wrapping" />
                   <Button mnemonicParsing="false" onAction="#moorNeighborhoodButton" prefHeight="25.0" prefWidth="136.0" text="Moor neighborhood" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Von Neumann neighborhood" />
+                  <Button mnemonicParsing="false" onAction="#vonNeumanNeighborhoodButton" prefHeight="25.0" prefWidth="136.0" text="Von Neumann neighborhood" />
                   <Label prefHeight="25.0" prefWidth="120.0" text="GoL" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
@@ -50,26 +57,23 @@
                   <Insets left="20.0" top="20.0" />
                </padding>
             </VBox>
-            <VBox prefHeight="559.0" prefWidth="142.0">
-               <padding>
-                  <Insets top="20.0" />
-               </padding>
-            </VBox>
          </children>
       </HBox>
    </left>
    <center>
-      <HBox fx:id="boardHbox" alignment="CENTER" maxHeight="500.0" maxWidth="500.0" BorderPane.alignment="CENTER" />
+      <ScrollPane prefViewportHeight="559.0" prefViewportWidth="595.0" BorderPane.alignment="CENTER_LEFT">
+         <content>
+            <HBox fx:id="boardHbox" alignment="CENTER" BorderPane.alignment="CENTER" />
+         </content>
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+      </ScrollPane>
    </center>
    <right>
       <VBox prefHeight="559.0" prefWidth="155.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" onAction="#gameOfLifeButton" prefHeight="67.0" prefWidth="136.0" text="Game of Life" textAlignment="CENTER">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="136.0" text="Langton Ant">
                <font>
                   <Font size="18.0" />
                </font>
@@ -83,7 +87,7 @@
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Button>
-            <Button mnemonicParsing="false" onAction="#resetButton" text="Reset" />
+            <Button mnemonicParsing="false" onAction="#resetButton" prefHeight="35.0" prefWidth="136.0" text="Reset" />
          </children>
          <padding>
             <Insets right="20.0" top="20.0" />

@@ -26,6 +26,7 @@ public class GUIBoard {
     public void initializeBoardGOL(){
         for (int i=0; i<width; ++i){
             VBox tmpVbox = new VBox();
+            tmpVbox.setMaxHeight(500);
             boardHbox.getChildren().addAll(tmpVbox);
             for(int j=0; j<height; ++j){
                 CellButton tmpCellButtonGOL = new CellButtonGOL(new Coordinates2D(i,j), BinaryState.DEAD, map);
@@ -39,6 +40,7 @@ public class GUIBoard {
     public void initializeBoardWW(){
         for (int i=0; i<width; ++i){
             VBox tmpVbox = new VBox();
+            tmpVbox.setMaxHeight(500);
             boardHbox.getChildren().addAll(tmpVbox);
             for(int j=0; j<height; ++j){
                 CellButton tmpCellButtonWW = new CellButtonWW(new Coordinates2D(i,j),
