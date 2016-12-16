@@ -35,6 +35,7 @@ public class Controller {
     private int timeInMs;
     private TimerTask clickNextButton;
     private Timeline timeline;
+    private boolean timerStarted = false;
 
     public Controller(){
         this.map = new HashMap<>();
@@ -210,6 +211,7 @@ public class Controller {
         currentAutomaton = null;
         timer = null;
         clickNextButton = null;
+
         commentBox.setText("settings reset");
     }
 
@@ -236,12 +238,13 @@ public class Controller {
             commentBox.setText("cannot start timer, some data might be missing");
             return;
         }
+        timerStarted = true;
         timeline.play();
         commentBox.setText("auto Next started");
     }
 
     public void stopTimerButton(){
-        if(timeline == null){
+        if(timeline == null || timerStarted == false){
             commentBox.setText("cannot stop timer, some data might be missing");
             return;
         }
