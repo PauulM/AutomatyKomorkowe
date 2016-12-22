@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 import static org.junit.Assert.*;
-
+//assertJ
 public class AutomatonTest {
 
     @Test
@@ -49,7 +49,7 @@ public class AutomatonTest {
         Automaton expectedNextAutomaton = new GameOfLife(3,3,factory,neighborhood,golRules);
         expectedNextAutomaton.insertStructure(map2);
 
-        Assert.assertEquals("Maps should be equal", true, map2.equals(nxtAut.getCells()));
+        Assert.assertEquals("Maps should be equal", map2,nxtAut.getCells());
     }
 
     @Test

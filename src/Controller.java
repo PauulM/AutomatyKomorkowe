@@ -211,7 +211,7 @@ public class Controller {
         currentAutomaton = null;
         timer = null;
         clickNextButton = null;
-
+        neighborsStrategy = null;
         commentBox.setText("settings reset");
     }
 
